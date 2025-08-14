@@ -3,6 +3,7 @@ import pygame
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+import sys
 def main():
     pygame.init()
     clk = pygame.time.Clock()
@@ -29,6 +30,10 @@ def main():
            obj.draw(screen)
            
         updatable.update(dt)
+        for astroid in asteroids:
+            if shooter.collision_check(astroid):
+                sys.exit("Game over!")
+            
         pygame.display.flip()
 
 if __name__ == "__main__":
