@@ -37,7 +37,11 @@ def main():
         for astroid in asteroids:
             if shooter.collision_check(astroid):
                 sys.exit("Game over!")
-            
+            for shot in shots:
+                if shot.collision_check(astroid):
+                    astroid.split()
+                    shot.kill()
+        
         pygame.display.flip()
 
 if __name__ == "__main__":
